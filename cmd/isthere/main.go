@@ -32,7 +32,11 @@ func main() {
 	}
 
 	command := os.Args[1]
-	isthereOutput, _ := isthere.IsThere(command)
+	isthereOutput, err := isthere.IsThere(command)
+	if err != nil {
+		fmt.Println(err.Error())
+		os.Exit(1)
+	}
 	fmt.Println(isthereOutput)
 	os.Exit(0)
 }

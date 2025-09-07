@@ -30,5 +30,5 @@ func IsThere(name string) (string, error) {
 		}
 	}
 
-	return "Unable find " + name + " in: " + pathEnv, errors.New("cannot find command")
+	return "", errors.New("Unable find " + name + " in: " + pathEnv)
 }
