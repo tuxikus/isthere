@@ -1,25 +1,20 @@
 package isthere
 
 import (
+	"errors"
 	"os"
 	"path/filepath"
 )
 
 const (
-	version = "0.0.1"
+	version = "v1.0"
 )
 
-type Info struct {
-	Version string
+func GetVersion() string {
+	return version
 }
 
-func GetInfo() *Info {
-	return &Info{
-		Version: version,
-	}
-}
-
-func IsThere(name string) string {
+func IsThere(name string) (string, error) {
 	pathEnv := os.Getenv("PATH")
 	paths := filepath.SplitList(pathEnv)
 	for _, path := range paths {
@@ -30,10 +25,10 @@ func IsThere(name string) string {
 
 		for _, file := range files {
 			if file.Name() == name {
-				return path + "/" + name
+				return path + "/" + name, nil
 			}
 		}
 	}
 
-	return "Unable find " + name + " in: " + pathEnv
+	return "Unable find " + name + " in: " + pathEnv, errors.New("cannot find command")
 }

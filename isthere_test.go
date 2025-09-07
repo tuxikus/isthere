@@ -15,7 +15,7 @@ func TestIsThere(t *testing.T) {
 	whichCmdStr := string(whichCmd)
 	whichCmdStr = strings.ReplaceAll(whichCmdStr, "\n", "")
 	whichCmdStr = strings.TrimSpace(whichCmdStr)
-	isThereCmd := IsThere("bash")
+	isThereCmd, _ := IsThere("bash")
 
 	if whichCmdStr != isThereCmd {
 		t.Errorf("which: %s, isthere: %s", whichCmdStr, isThereCmd)
