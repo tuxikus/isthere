@@ -1,1 +1,15 @@
-* isthere - a command
+* isthere a command
+=isthere= checks if a command can be found in the =$PATH=.
+
+** Usage
+#+begin_src shell
+  $ isthere bash
+  /usr/bin/bash
+#+end_src
+
+** Install
+#+begin_src shell
+  make install-local
+#+end_src
+This will install the binary into ~/.local/bin.
+
